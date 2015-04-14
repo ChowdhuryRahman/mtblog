@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fisrtname:</strong>
+  <%= @signup.FisrtName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @signup.LastName %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @signup.Email %>
+</p>
+
+<h2>Comments</h2>
+<% @signup.comments.each do |comment| %>
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@signup, @signup.comments.build]) do |f| %>
+<p>
+  <%= f.label :commenter %><br>
+  <%= f.text_field :commenter %>
+</p>
+<p>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+
+
+
+<%= link_to 'Edit', edit_signup_path(@signup) %> |
+<%= link_to 'Back', signups_path %>
